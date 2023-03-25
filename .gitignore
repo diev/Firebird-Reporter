@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/FireReporter_2023-03-24.zip
+/FireReporter_2023-03-24_src.zip
