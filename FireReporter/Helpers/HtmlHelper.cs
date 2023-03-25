@@ -46,7 +46,7 @@ namespace FireReporter
 
             if (HtmlTitles.Length > 0)
                 text.Append("<tr><th>")
-                    .Append(string.Join("</th><th>", HtmlTitles.Split(',')))
+                    .Append(string.Join("</th><th>", HtmlTitles))
                     .AppendLine("</th></tr>");
 
             return text.ToString();
@@ -64,23 +64,6 @@ namespace FireReporter
             text.AppendLine("</body></html>");
 
             return text.ToString();
-        }
-
-        public static void Send(string report)
-        {
-            var mailMessage = new MailMessage()
-            {
-                From = new MailAddress(Sender),
-                Subject = HtmlSubject,
-                Body = report,
-                IsBodyHtml = true
-            };
-
-            foreach (var recipient in HtmlRecipients.Split(','))
-                mailMessage.To.Add(recipient);
-
-            var client = new SmtpClient();
-            client.Send(mailMessage);
         }
     }
 }

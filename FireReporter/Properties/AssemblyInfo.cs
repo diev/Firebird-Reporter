@@ -1,4 +1,5 @@
-﻿#region License
+﻿using System.Resources;
+#region License
 //------------------------------------------------------------------------------
 // Copyright (c) Dmitrii Evdokimov
 // Open ource software https://github.com/diev/
@@ -53,3 +54,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("ru-RU")]

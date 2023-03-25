@@ -18,6 +18,7 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 
@@ -119,7 +120,61 @@ namespace FireReporter
                     return string.Empty;
             }
 
-            return GetString(value).Replace("[", "<").Replace("]", ">");
+            return GetString(value)
+                .Replace("[", "<")
+                .Replace("]", ">");
+        }
+
+        internal static string[] GetList(string key, bool required = false)
+        {
+            string value = ConfigurationManager.AppSettings[key];
+
+            char[] sep = { '\n', '\r', '\t', ',' };
+            string[] values = value.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int count = values.Length;
+
+            if (required && (count == 0))
+                throw new ArgumentNullException(key, $"Не указан '{key}'.");
+
+            var result = new List<string>();
+
+            for (int i = 0; i < count; i++)
+            {
+                string val = values[i].Trim();
+
+                if (!string.IsNullOrEmpty(val))
+                    result.Add(val);
+            }
+
+            return result.ToArray();
+        }
+
+        internal static string[] GetHtmlList(string key, bool required = false)
+        {
+            string value = ConfigurationManager.AppSettings[key];
+
+            char[] sep = { '\n', '\r', '\t', ',' };
+            string[] values = value.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int count = values.Length;
+
+            if (required && (count == 0))
+                throw new ArgumentNullException(key, $"Не указан '{key}'.");
+
+            var result = new List<string>();
+
+            for (int i = 0; i < count; i++)
+            {
+                string val = values[i].Trim();
+
+                if (!string.IsNullOrEmpty(val))
+                    result.Add(val
+                        .Replace("[", "<")
+                        .Replace("]", ">"));
+            }
+
+            return result.ToArray();
         }
 
         internal static string GetString(string value)

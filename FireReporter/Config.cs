@@ -33,20 +33,20 @@ namespace FireReporter
         public static string Sender { get; } = GetHtml(nameof(Sender), SendMail);
 
         public static string TextFile { get; } = GetFileName(nameof(TextFile), SaveFile);
-        public static string TextRecipients { get; } = GetHtml(nameof(TextRecipients));
+        public static string[] TextRecipients { get; } = GetHtmlList(nameof(TextRecipients));
         public static string TextSubject { get; } = GetText(nameof(TextSubject));
         public static string TextHeader { get; } = GetText(nameof(TextHeader));
         public static string TextFooter { get; } = GetText(nameof(TextFooter));
         public static string TextSeparator { get; } = GetSeparator(nameof(TextSeparator));
 
         public static string HtmlFile { get; } = GetFileName(nameof(HtmlFile), SaveFile);
-        public static string HtmlRecipients { get; } = GetHtml(nameof(HtmlRecipients));
+        public static string[] HtmlRecipients { get; } = GetHtmlList(nameof(HtmlRecipients));
         public static string HtmlSubject { get; } = GetText(nameof(HtmlSubject));
         public static string HtmlStyle { get; } = GetString(GetText(nameof(HtmlStyle)));
         public static string HtmlHeader { get; } = GetHtml(nameof(HtmlHeader));
-        public static string HtmlTitles { get; } = GetText(nameof(HtmlTitles));
+        public static string[] HtmlTitles { get; } = GetList(nameof(HtmlTitles));
         public static string HtmlFooter { get; } = GetHtml(nameof(HtmlFooter));
 
-        public static string FailRecipients { get; } = GetHtml(nameof(FailRecipients));
+        public static string[] FailRecipients { get; } = GetHtmlList(nameof(FailRecipients));
     }
 }
